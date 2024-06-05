@@ -1,336 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./Dashboard/style.css" />
-    
-    <title>Superstore 13-JKT</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link  rel="stylesheet" href="./Dashboard/style.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<title>Superstore 13-JKT</title>
+   <!-- Swiper CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+			rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+		<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+		<script src="./script.js"></script>
+	</head>
+	<body>
+		<!-- Bagian Header -->
+		<header>
+			<!-- Bagian Navbar -->
+			<nav>
+				<div>
+					<a href="index.html" class="logo">Superstore13-jkt</a
+					>
+				</div>
+				<div>
+					<ul id="nav">
+						<li><a href="#Home">Home</a></li>
+						<li><a href="#Dashboard">Dashboard</a></li>
+						<li><a href="#Table">Data Table</a></li>
+						<li><a href="#AboutUs">About Us</a></li>
+						<li><a href="#Team">Our Team</a></li>
+					</ul>
+				</div>
+				<div
+					class="menu"
+					id="menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</nav>
+			<section id="Home">
+				<div class="container">
+					<div class="animasi">
+						<img src="./img/data-analysis.png" alt="Deskripsi Gambar">
+					</div>
+		
+					<div class="keterangan">
+						<h1>Welcome to Project Team 13 with RevoU Tech Academy Learn Data Analytics & Software Development with AI</h1>
+						
+						<p> Superstore13-jkt Analytics is a specialised analytics platform dedicated 
+						  to providing comprehensive information on the sales profitability of superstores.
+						  We provide deep insights into the financial performance of superstores, with a clear
+						  emphasis on the profitability aspect. 
+						</p>
+						<button onclick="scrollToAboutUs()"> Read More </button>
+					</div>
+				</div>
+			</section>
+		</header>
 
+		<!-- Bagian Dashboard - Section -->
+		<main>
+				<section id="Dashboard">
+					<h1>Dashboard Superstore 13 - Jakarta</h1>
+					<br />
+			
+					<div class="container">
+						<div class="box">
+							<div>
+								<div class="sales-number" id="totalSales">0.00</div>
+								<div class="sales-text">Total Sales</div>
+							</div>
+							<div class="icon-card">
+								<ion-icon name="cash-outline"></ion-icon>
+							</div>
+						</div>
+			
+						<div class="box">
+							<div>
+								<div class="sales-number" id="totalProfit">0.00</div>
+								<div class="sales-text">Total Profit</div>
+							</div>
+							<div class="icon-card">
+								<ion-icon name="trending-up-outline"></ion-icon>
+							</div>
+						</div>
+			
+						<div class="box">
+							<div>
+								<div class="sales-number" id="totalProduct">0</div>
+								<div class="sales-text">Total Product</div>
+							</div>
+							<div class="icon-card">
+								<ion-icon name="cart-outline"></ion-icon>
+							</div>
+						</div>
+			
+						<div class="box">
+							<div>
+								<div class="sales-number" id="totalCustomer">0</div>
+								<div class="sales-text">Total Customer</div>
+							</div>
+							<div class="icon-card">
+								<ion-icon name="people-circle-outline"></ion-icon>
+							</div>
+						</div>
+					</div>
+			
+					<div class="labelstates">Total Sales Per States</div>
+					<div id="chart-1"></div>
+			
+					<!-- Filter Data -->
+					<form id="filterForm" class="drop-down">
+						<select name="year" id="year">
+							<option value="">Order Date (Year)</option>
+							<option value="2014">2014</option>
+							<option value="2015">2015</option>
+							<option value="2016">2016</option>
+							<option value="2017">2017</option>
+						</select>
+						<select name="category" id="category">
+							<option value="">Category</option>
+							<option value="Furniture">Furniture</option>
+							<option value="Office Supplies">Office Supplies</option>
+							<option value="Technology">Technology</option>
+						</select>
+						<select name="region" id="region">
+							<option value="">Region</option>
+							<option value="Central">Central</option>
+							<option value="East">East</option>
+							<option value="South">South</option>
+							<option value="West">West</option>
+						</select>
+						<select name="segment" id="segment">
+							<option value="">Segment</option>
+							<option value="Corporate">Corporate</option>
+							<option value="Home Office">Home Office</option>
+							<option value="Consumer">Consumer</option>
+						</select>
+					</form>
 
-  </head>
-  <body>
+				<!-- CHART -->
+				<div class="container-card swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Total Sales Per Month</div>
+								<div>
+									<canvas id="chart-2"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Total Sales Per Year</div>
+								<div>
+									<canvas id="chart-3"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Sales Profitability</div>
+								<div>
+									<canvas id="chart-4"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Total Sales Category</div>
+								<div class="chart-5">
+									<canvas id="chart-5"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Total Sales Per Ship Mode</div>
+								<div class="chart-6">
+									<canvas id="chart-6"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Total Sales Per Sub-Category</div>
+								<div>
+									<canvas id="chart-7"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">Total Sales Per Customer Segment</div>
+								<div class="chart-8">
+									<canvas id="chart-8"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="card-chart">
+								<div class="card-header">5 Customers with the highest purchase</div>
+								<div>
+									<canvas id="chart-9"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+		   <!-- Add Pagination -->
+		   <div class="swiper-pagination"></div>
+			</section>
 
-    <!-- Bagian Header -->
-    <header>
-      <!-- Bagian Navbar -->
-      <nav>
-        <div>
-          <a href="index.html" class="logo">Superstore13-jkt</a>
-        </div>
-        <div>
-          <ul id="nav">
-            <li><a href="#Home">Home</a></li>
-            <li><a href="#Dashboard">Dashboard</a></li>
-            <li><a href="#AboutUs">About Us</a></li>
-            <li><a href="#Feedback">Feedback</a></li>
-            <li><a href="#Team">Team</a></li>
-          </ul>
-        </div>
-        <div class="menu" id="menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-      <section id="Home">
-        <h1>HEADER BELOM ! (Kanan Gambar Animasi, Kiri Ket)</h1>
-      </section>
-    </header>
+			<!-- Data Table -->
+			<section id="Table">
+				<h1 style="margin-top: 70px;">Data Table</h1><br>
+				<div class="main-table">
+						<table id="example" class="display">
+							<thead id="tableHead">
+								<tr>
+									<th>Row ID</th>
+									<th>Order ID</th>
+									<th>Order Date</th>
+									<th>Ship Date</th>
+									<th>Ship Mode</th>
+									<th>Customer Name</th>
+									<th>Segment</th>
+									<th>Region</th>
+									<th>Category</th>
+									<th>Product Name</th>
+									<th>Sales</th>
+									<th>Quantity</th>
+									<th>Discount</th>
+									<th>Profit</th>
+								</tr>
+							</thead>
+						</table>
+				</div>
+			</div>
 
-    <!-- Bagian Dashboard - Section -->
-    <main>
-    <section id="Dashboard">
-      <h1>Dashboard Superstore 13 - Jakarta</h1>
-      <br />
+			<!-- Bagian About Us = Terdapat tag <main>, <article> & <section> -->
+			<section id="AboutUs">
+				<article>
+					<div class="AboutUs">
+						<div class="AboutUs-container">
+							<br />
+							<h2 style="text-align: center">About Us</h2>
+							<p>
+								Superstore13-jkt Analytics is a specialised analytics platform dedicated to providing comprehensive information on 
+								the sales profitability of superstores. We provide deep insights into the financial performance of superstores, with a 
+								clear emphasis on the profitability aspect. With a sharp focus on profitability information, 
+								we provide superstores with a very useful tool to manage and improve their overall financial performance.
+							</p>
+							<p>
+								Our team consists of passionate and talented individuals, with expertise in areas such as software engineering, 
+								deployment team, pitch deck team, and quality assurance. Together, we are committed to delivering innovative and high-quality 
+								solutions to our clients. With our experience and dedication, we believe that we can be a reliable partner in supporting 
+								the achievement of your superstore's financial goals.
+							</p>
+							<p>
+								We believe that collaboration and diversity are key to bringing the most effective and relevant solutions to our clients. 
+								Therefore, we are always open to discuss and collaborate with superstores who want to optimise their financial performance. 
+								Thank you for trusting Superstore13-jkt Analytics as your analytics partner.
+							</p>
+						</div>
+					</div>
+				</article>
+			</section>
 
-      <div class="container">
-        <div class="box">
-          <div>
-          <div class="sales-number">127.100.743</div>
-          <div class="sales-text">Total Sales</div>
-          </div>
-          <div class="icon-card">
-            <ion-icon name="cash-outline"></ion-icon>
-        </div>
-      </div>
+			
 
-        
-        <div class="box">
-          <div>
-          <div class="sales-number">13.455.261</div>
-          <div class="sales-text">Total Profit</div>
-        </div>
-        <div class="icon-card">
-          <ion-icon name="trending-up-outline"></ion-icon>
-      </div>
-      </div>
-      
+			<!-- Bagian Team = Terdapat tag <main>, <article> & <section> -->
+			<section id="Team">
+				<article>
+					<br /><br />
+					<h2 style="text-align: center">Our Team</h2>
+					<div class="team-content">
+						<!-- Isi konten di dalam "about" -->
 
-        <div class="box">
-          <div>
-          <div class="sales-number">1.813</div>
-          <div class="sales-text">Total Product</div>
-        </div>
-        <div class="icon-card">
-          <ion-icon name="cart-outline"></ion-icon>
-      </div>
-      </div>
+						<div class="box-team">
+							<img
+								src="./img/randi.jpeg"
+								alt="" />
+							<h3>Randi Praditiya</h3>
+							<h5>PIC : Project Leader</h5>
+							<h5>Universitas Esa Unggul</h5>
+						</div>
 
-        <div class="box">
-          <div>
-          <div class="sales-number">793</div>
-          <div class="sales-text">Total Customer</div>
-        </div>
-        <div class="icon-card">
-          <ion-icon name="people-circle-outline"></ion-icon>
-      </div>
-      </div>
-    </div>
-      </div>
+						<div class="box-team">
+							<img
+								src="./img/Rizka Magvira.png"
+								alt="" />
+							<h3>Rizka Magvira</h3>
+							<h5>PIC : Software Engineering</h5>
+							<h5>Universitas Islam Balitar</h5>
+						</div>
 
-      <div class="labelstates">Total Sales Per States</div>
-       <div id="chart-1"></div> <!--untuk menambahkan konten didalamnya untuk memanipulasi elemen ini melalui kode CSS atau JavaScript.  -->
+						<div class="box-team">
+							<img
+								src="./img/women.jpeg"
+								alt="" />
+							<h3>Condro Pargianto</h3>
+							<h5>PIC : Software Engineering</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-      <div class="container-card">
-        <div class="card">
-          <div class="card-header"></div>
-          <!-- Membuat Fitur Dropdown -->
-          <select>
-            <option value="orderdate1">Order Date (Tahun)</option>
-            <option value="orderdate2">2017</option>
-            <option value="orderdate3">2018</option>
-          </select>
-          <select>
-            <option value="category1">Category</option>
-            <option value="category2">Option 2</option>
-            <option value="category3">Option 3</option>
-          </select>
-          <select>
-            <option value="state1">State</option>
-            <option value="state2">Option 2</option>
-            <option value="state3">Option 3</option>
-          </select>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/Hendrix.jpeg"
+								alt="" />
+							<h3>Hendrix Hendrawan</h3>
+							<h5>PIC : Software Engineering</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-        <div class="card">
-          <div class="card-header">Total Sales Per Bulan</div>
-          <div>
-            <canvas id="chart-2"></canvas>
-          </div>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/putri.jpeg"
+								alt="" />
+							<h3>Putri Robi'atul A</h3>
+							<h5>PIC : Software Engineering</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-        <div class="card">
-          <div class="card-header">Total Sales Per Tahun</div>
-          <div>
-            <canvas id="chart-3"></canvas>
-          </div>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/topan.jpg"
+								alt="" />
+							<h3>Topan Saefulloh</h3>
+							<h5>PIC : Deployment Team</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-        <div class="card">
-          <div class="card-header">Profitabilitas Penjualan</div>
-          <div>
-            <canvas id="chart-4"></canvas>
-          </div>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/Bimo.jpeg"
+								alt="" />
+							<h3>Bima Putra W</h3>
+							<h5>PIC : Pitch Deck Team</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-        <div class="card">
-          <div class="card-header">Total Sales Category</div>
-          <div>
-            <canvas id="chart-5"></canvas>
-          </div>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/Aqilaah Carissa A.png"
+								alt="" />
+							<h3>Aqilaah Carissa A</h3>
+							<h5>PIC : Quality Assurance</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-        <div class="card">
-          <div class="card-header">Total Sales Per Ship Mode</div>
-          <div>
-            <canvas id="chart-6"></canvas>
-          </div>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/women.jpeg"
+								alt="" />
+							<h3>Mudrika</h3>
+							<h5>PIC : Quality Assurance</h5>
+							<h5>Universitas - </h5>
+						</div>
 
-        <div class="card">
-          <div class="card-header">Total Sales Per Sub-Category</div>
-          <div>
-            <canvas id="chart-7"></canvas>
-          </div>
-        </div>
+						<div class="box-team">
+							<img
+								src="./img/riyana.jpeg"
+								alt="" />
+							<h3>Riyana Aditya C</h3>
+							<h5>PIC : Quality Assurance</h5>
+							<h5>Universitas - </h5>
+						</div>
+					</div>
+				</article>
+			</section>
+		</main>
 
-        <div class="card">
-          <div class="card-header">Total Sales Per Segment</div>
-          <div>
-            <canvas id="chart-8"></canvas>
-          </div>
-        </div>
+		<div
+			class="fly"
+			onclick="goToTop()">
+			<ion-icon name="arrow-up-circle-outline"></ion-icon>
+		</div>
 
-        <div class="card">
-          <div class="card-header">5 Customer dengan pembelian tertinggi</div>
-          <div>
-            <canvas id="chart-9"></canvas>
-          </div>
-        </div>
+		<!-- Bagian Footer -->
+		<footer id="footer">
+			<p>&copy; 2024 Section Jakarta - Team 13 - All Rights Reserved.</p>
+		</footer>
 
+		<!-- tag script digunakan untuk menghubungkan file HTML dengan file JavaScript  -->
+		<script src="Dashboard/script.js"></script>
 
-      </div>
-    </section>
+		<!-- CHARTS JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+		<script src="Dashboard/chart.js"></script>
 
+		<!-- IONICONS -->
+		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+		<!-- Swiper JS -->
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Bagian About Us = Terdapat tag <main>, <article> & <section> -->
-      <section id="AboutUs">
-        <article>
-          <div class="AboutUs">
-            <div class="AboutUs-container"><br>
-          <h2 style="text-align: center">About Us</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, minus ipsam beatae molestias iusto veritatis? 
-            Dolor laudantium et expedita ipsum natus. Qui omnis fugiat temporibus unde quidem ab facere maiores.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, eveniet accusamus. Voluptatibus doloremque 
-            ea vel facere soluta qui, magni iure nihil! Necessitatibus quia aliquam aspernatur, repellendus quaerat mollitia. Fugiat, 
-            dicta? consectetur adipisicing elit. Illo, eveniet adipisicing elit, aspernatur. ea vel facere soluta qui, magni 
-            iure nihil! Necessitatibus quia aliquam aspernatur, repellendus quaerat mollitia. Fugiat, 
-            dicta? consectetur adipisicing elit. Illo, eveniet adipisicing elit, aspernatur.
-          </p>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, minus ipsam beatae molestias iusto veritatis? 
-            Dolor laudantium et expedita ipsum natus. Qui omnis fugiat temporibus unde quidem ab facere maiores.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, eveniet accusamus. Voluptatibus doloremque 
-            ea vel facere soluta qui, magni iure nihil! Necessitatibus quia aliquam aspernatur, repellendus quaerat mollitia. Fugiat, 
-            dicta? consectetur adipisicing elit. Illo, eveniet adipisicing elit, aspernatur.</p>
-          </div>
-          </div>
-        </article>
-      </section>
+		<!-- css buat si jquery sama datatablenya (wajib kl nggak ga kerender) -->
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"/>
+		<!-- jQuery Pastikan jQuery berada pada paling atas saat pakai datatables -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- DataTables JS -->
+		<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+		<!-- DataTables Search Highlight -->
+		<script src="https://cdn.datatables.net/plug-ins/1.11.5/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
+		<!-- jQuery Highlight -->
+		<script src="https://bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
 
+		<!-- Custom JS -->
+		<script>
+			const swiper = new Swiper('.swiper-container', {
+					effect: "cube",
+					grabCursor: true,
+					loop: true,
+					speed: 1000,
+					cubeEffect: {
+						shadow: false,
+						slideShadows: true,
+						shadowOffset: 10,
+						shadowScale: 0.94,
+					},
+					// autoplay: {
+					// 	delay: 2400,
+					// 	pauseOnMouseEnter: true,
+					// }
+				});
 
-
-      <section id="Feedback">
-        <div class="feedback">
-          <div class="feedback-container">
-              <form action="feedbackForm">
-                  <h2 class="sm-view" style="text-align: center; margin-bottom: 20px; margin-top: 80px;">Your Feedback is Important For Us</h2><br>
-                  <label for="name">Your Name</label> 
-                  <input type="text" id="name" name="name" placeholder="Enter your name">
-
-                  <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" placeholder="Enter your Email Address">
-
-                  <label for="feedback">Feedback</label>
-                  <textarea type="text" id="feedback" name="feedback" rows="10" placeholder="Write Your Feedback"></textarea>
-                  <button type="submit">Kirim</button>
-              </form>
-            </div>
-          </div>
-        </div>
-    </section>
-
-
-
-    <!-- Bagian Team = Terdapat tag <main>, <article> & <section> -->
-    <section id="Team">
-      <article>
-        <br />
-        <h2 style="text-align: center">Our Team</h2>
-        <div class="team-content">
-          <!-- Isi konten di dalam "about" -->
-          
-          <div class="box-team">
-              <img src="women.jpeg" alt="">
-              <h3>Randi Praditiya</h3>
-              <h5>PIC : Project Leader</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Rizka Magvira</h3>
-              <h5>PIC : Software Engineering</h5>
-              <h5>Universitas Islam Balitar</h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Condro Pargianto</h3>
-              <h5>PIC : Software Engineering</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Hendrix Hendrawan</h3>
-              <h5>PIC : Software Engineering</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Putri Robi'atul A</h3>
-              <h5>PIC : Software Engineering</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="./img/topan.jpg" alt="">
-              <h3>Topan Saefulloh</h3>
-              <h5>PIC : Deployment Team</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Bima Putra W</h3>
-              <h5>PIC : Pitch Deck Team</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Aqilaah Carissa A</h3>
-              <h5>PIC : Quality Assurance</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Mudrika</h3>
-              <h5>PIC : Quality Assurance</h5>
-              <h5>Universitas </h5>
-          </div>
-
-          <div class="box-team">
-            <img src="women.jpeg" alt="">
-              <h3>Riyana Aditya C</h3>
-              <h5>PIC : Quality Assurance</h5>
-              <h5>Universitas </h5>
-          </div>
-        </div>
-      </article>
-    </section>
-  </main>
-    
-  <div class="fly" onclick="goToTop()"><ion-icon name="arrow-up-circle-outline"></ion-icon></div>
-
-    <!-- Bagian Footer -->
-    <footer id="footer">
-      <p>&copy; 2024 Section Jakarta - Team 13 - All Rights Reserved.</p>
-    </footer>
-
-    <!-- tag script digunakan untuk menghubungkan file HTML dengan file JavaScript  -->
-    <script src="Dashboard/script.js"></script>
-  </body>
-
-      <!-- CHARTS JS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-      <script src="Dashboard/chart.js"></script>
-
-  <!-- IONICONS -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+				$(document).ready(() => {
+				$("#tableHead").hide();
+				$.ajax({
+					url: "./dataset13.json",
+					dataType: "json",
+					success: function (data) {
+						$("#tableHead").show();
+						$("#example").DataTable({
+							data: data,
+							columns: [
+								{ data: "Row ID" },
+								{ data: "Order ID" },
+								{ data: "Order Date" },
+								{ data: "Ship Date" },
+								{ data: "Ship Mode" },
+								{ data: "Customer Name" },
+								{ data: "Segment" },
+								{ data: "Region" },
+								{ data: "Category" },
+								{ data: "Product Name" },
+								{ data: "Sales" },
+								{ data: "Quantity" },
+								{ data: "Discount" },
+								{ data: "Profit" },
+                    		],
+                		});
+            		},
+        		});
+    		});
+		</script>
+	</body>
 </html>
