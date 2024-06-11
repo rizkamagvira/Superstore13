@@ -22,7 +22,7 @@
 		<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 		<!-- Aos Animation Library -->
 		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-		<link rel="shortcut icon" href="IMG/Logo.ico" type="image/x-icon"> <!-- BARU -->
+		<link rel="shortcut icon" href="img/Logo.ico" type="image/x-icon"> <!-- BARU -->
 	</head>
 	<body>
 		<!-- Bagian Header -->
@@ -593,19 +593,18 @@ $(document).ready(function() {
                 `;
             });
 
+            // Mengganti isi body tabel dengan data yang sudah diisi
             $('#example tbody').html(tableBody);
 
-            // Menginisialisasi DataTable dengan opsi responsif
-            $('#example').DataTable({
-                scrollX: true
-            });
+            // Menginisialisasi DataTable
+            $('#example').DataTable();
         })
         .catch(error => {
             console.error('Error fetching the JSON data:', error);
             $('#loading').text('Failed to load data.'); // Menampilkan pesan kesalahan jika terjadi kesalahan saat mengambil data
         });
-	});
-	// END -- DATA TABEL --
+});
+// END -- DATA TABEL --
 
 		</script>
 	</body>

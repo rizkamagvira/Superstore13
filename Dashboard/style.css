@@ -456,8 +456,6 @@ option {
   text-align: center; /* Teks rata tengah */
 }/* END CHART */
 
-
-
 /* Data Table */
 /* CSS untuk menyesuaikan tampilan tabel */
 #example {
@@ -482,6 +480,7 @@ table.dataTable thead th {
 }
 
 table.dataTable tbody td {
+  padding: 8px; /* Padding sel body */
   border-bottom: 1px solid #ddd; /* Garis bawah pada setiap sel */
 }
 
@@ -501,16 +500,18 @@ h1 {
   margin-bottom: 10px; /* Margin bawah 10px */
 }
 
- /* Data Table */
- .main-table {
-  background-color: white; /* Warna latar belakang putih */
-  width: 100%; /* Lebar 100% */
-  padding-left: 10px; /* Padding kiri 10px */
-  padding-right: 10px; /* Padding kanan 10px */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan kotak */
-  border-radius: 8px; /* Sudut bulatan */
-  overflow-x: auto; 
+/* Gaya kontainer utama */
+.main-table {
+  background-color: white;
+  width: 75%;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-x: auto; /* Menambahkan scrollbar horizontal jika melebihi lebar */
   font-weight: 2;
+  max-width: 1200px; /* Batasi lebar maksimum tabel */
+  margin: 0 auto; /* Pusatkan tabel */
 }
 
 
